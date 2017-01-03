@@ -1,0 +1,27 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+<section id="ImagePods" class="" style="background-color:@Model.First().SectionBackgroundColour">
+    <div class="container">
+        <div class="about">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="header-colour" style="color:@Model.First().SectionTextColour; text-align: center">Our Products</h3>
+                    <span class="text-center" style="border-bottom: 3px solid @Model.First().SectionTextUnderlineColour;display:table;margin: 0 auto;"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Where(it => it.TypeId == "ImagePod"))
+            {
+                <div class="col-md-4 img-portfolio" style="background-color:@Html.DisplayFor(modelItem => item.BackgroundColour)">
+                    <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="img-responsive img-hover img-pod crop-height scale crop" alt="IMAGES" />
+                    <h3 class="header-colour">
+                        <a href="@Html.DisplayFor(modelItem => item.UrlLink)" style="color:@Html.DisplayFor(modelItem => item.TitleColour)">@Html.Raw(HttpUtility.HtmlDecode(item.Title))</a>
+                    </h3>
+                    <p style="color:@Html.DisplayFor(modelItem => item.MainTextColour)">@Html.Raw(HttpUtility.HtmlDecode(item.MainText))</p>
+                    <a class="btn btn-primary" href="@Html.DisplayFor(modelItem => item.UrlLink)" style="color:@Html.DisplayFor(modelItem => item.ButtonTextColour); background-color:@Html.DisplayFor(modelItem => item.ButtonColour)">@Html.DisplayFor(modelItem => item.ButtonText)</a>
+                </div>
+            }
+        </div>
+    </div>
+</section>

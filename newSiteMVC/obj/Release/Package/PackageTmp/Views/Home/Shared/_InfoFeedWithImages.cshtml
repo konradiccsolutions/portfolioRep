@@ -1,0 +1,28 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="border-radius: 20px;">
+        <div class="panel-heading"  style="border-top-left-radius: 20px;border-top-right-radius: 20px;"> <span class="glyphicon glyphicon-list-alt" style="color:white"></span><a href="/Page/Events"><b style="color:white">Events</b></a></div>
+        <div class="panel-body" style="padding-top: 0px;margin-top: -50px;margin-bottom: -70px" ;>
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="news1" style="overflow-y: hidden; height: 210px;">
+                        @foreach (var item in Model.Where(it => it.TypeId == "SingleRow" && it.PageId== "Events"))
+                        {
+                            <li style="display: none;" class="news-item">
+                                <table cellpadding="4">
+                                    <tbody>
+                                        <tr>
+                                            <td><img src="@item.ImageUrl" style="margin-right:15px" width="60" class="img"></td>
+                                            <td><a href="@item.UrlLink">@item.Title</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

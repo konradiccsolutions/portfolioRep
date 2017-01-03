@@ -1,0 +1,22 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+@foreach (var item in Model.Where(it => it.TypeId == "PopUpBanner" && it.Active == true))
+{
+
+    <div class="alert alert-danger" style="border: none;background-color:@item.BackgroundColour;margin-bottom: 0px;padding-top: 45px; position: fixed; z-index: 1;width: 100%">
+        <div style="text-align:center">
+            <a href="@item.UrlLink" style="text-decoration: none;color:@item.TitleColour">@item.Title</a>
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        </div>
+
+    </div>
+  
+        }
+
+        <script type="text/javascript">
+            function setCookie() {
+                var today = new Date();
+                today.setHours(today.getHours() + 1);
+                document.cookie = 'check=testcookiess; expires=' + today + '; path=/';
+            }
+        </script>

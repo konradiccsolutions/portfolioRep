@@ -1,0 +1,57 @@
+﻿@using System.Text.RegularExpressions
+@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+@{
+    ViewBag.Title = Request.RawUrl;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<%--------------------- Top Banner with moving image ---------------------%>*@
+
+@Html.Partial("~/Views/Pages/Shared/_PageTopBanner.cshtml", Model)
+
+@*<%--------------------- Main page content ---------------------%>*@
+
+@foreach (var item in Model.Where(it => it.TypeId == "SingleRow"))
+{
+    if (string.IsNullOrEmpty(item.ImageUrl))
+    {
+        @Html.Partial("~/Views/Pages/Shared/_SingleRowComponent.cshtml", item)
+    }
+    else
+    {
+        @Html.Partial("~/Views/Pages/Shared/_SingleRowWithImageComponent.cshtml", item)
+    }
+ 
+}
+
+@if (@Request.RawUrl == "/Page/InTheNews")
+{
+    @Html.Partial("~/Views/Pages/Shared/_SingleRowWithLinkComponent.cshtml", Model.OrderByDescending(it => it.Priority))
+
+}
+
+@if (Regex.Replace(Request.FilePath, "[0-9]", "") == "/Page/InTheNews/News/")
+{
+    @Html.Partial("~/Views/Pages/Shared/_FullWidthWithImage.cshtml", Model.Where(it => it.Id.ToString() == ViewBag.NewsId))
+}
+
+@if (@Request.RawUrl == "/Page/ContactUs")
+{
+    @Html.Partial("~/Views/Pages/Shared/_FullWidthContactPage.cshtml", Model)
+
+}
+@{
+    string[] listOfPages = new string[] {"DeviceTesting", "VantivViable", "HostSimulation", "TrainingCards", "DeveloperTool", "CardTesting", "AboutUs", "AboutEMV","WhyChooseUs", "Careers"};
+
+    foreach (var item in listOfPages)
+    {
+        if (@Request.RawUrl == "/Page/" + item)
+        {
+            @Html.Partial("~/Views/Pages/Shared/_FullWidthWithImage.cshtml", Model)
+        }
+    }
+}
+
+@*<%--------------------- Moving Background Image ---------------------%>**@
+
+    @Html.Partial("~/Views/Pages/Shared/_MovingBackgroundImage.cshtml", @Model.First(it => it.TypeId == "TopBanner"))

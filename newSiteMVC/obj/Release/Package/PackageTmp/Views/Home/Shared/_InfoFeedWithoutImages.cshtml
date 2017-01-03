@@ -1,0 +1,21 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+<div class="col-md-4">
+    <div class="panel panel-default" style="border-radius: 20px;">
+        <div class="panel-heading" style="border-top-left-radius: 20px;border-top-right-radius: 20px;"> <span class="glyphicon glyphicon-list-alt" style="color:white"></span><a href="/Page/InTheNews"><b style="color:white">News</b></a></div>
+        <div class="panel-body" style="padding-top: 0px;margin-top: -50px;margin-bottom: -70px" ;>
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul id="news1" style="overflow-y: hidden; height: 210px;">
+                        @foreach(var item in Model.Where(it => it.TypeId == "NewsFeed").OrderBy(it => it.Id).Take(10))
+                        {
+                            <li class="news-item">
+                               @Html.ActionLink(item.Title, "LoadPageContent", "Pages", new { Id = item.Id , PageId = item.PageId }, new { @class = "" })
+                            </li>
+                        }                      
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+<section id="AboutUs" class="bg-dark-gray" style="background-color:@Model.First(it => it.TypeId == "NewsFeed").SectionBackgroundColour">
+    <div class="container" style="margin-top:-30px">
+        <div class="about">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 style="text-align: center" style="color: @Model.First(it => it.TypeId == "NewsFeed").SectionTextColour">ICC Solutions</h3>
+                    <span style="display:table;margin:0 auto; color: @Model.First(it => it.TypeId == "NewsFeed").SectionTextUnderlineColour "></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            @*<%--------------------- News Section ---------------------%>*@
+
+            @Html.Partial("~/Views/Home/Shared/_InfoFeedWithoutImages.cshtml", Model)
+
+            @*<%--------------------- Video Section ---------------------%>*@
+
+            @Html.Partial("~/Views/Pages/Shared/_VideoPodComponent.cshtml", Model.Where(it => it.PageId == "Home"))
+
+            @*<%--------------------- Events Section ---------------------%>*@
+            @Html.Partial("~/Views/Home/Shared/_InfoFeedWithImages.cshtml", Model)
+            
+
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(function () {
+        $(".news1").bootstrapNews({
+            newsPerPage: 3,
+            autoplay: true,
+			pauseOnHover:true,
+            direction: 'up',
+            newsTickerInterval: 4000,
+            onToDo: function () {
+                //console.log(this);
+            }
+        });
+
+        $("#news1").bootstrapNews({
+		    newsPerPage: 3,
+		    autoplay: true,
+		    direction: 'up',
+		    pauseOnHover: true,
+		    newsTickerInterval: 4000,
+		    onToDo: function () {
+		        //console.log(this);
+		    }
+		});
+
+    });
+</script>

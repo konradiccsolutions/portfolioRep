@@ -1,0 +1,106 @@
+﻿@using reCAPTCHA.MVC
+<div class="container">
+    <div class="row">
+        
+        @if (Request.Cookies["emailSent"]?.Value == "success")
+        {
+            <div class="alert alert-success">
+                <strong>Success!</strong> Your email was successfully sent. Thank you for contacting ICC Solutions.
+            </div>
+        }
+        @if (Request.Cookies["emailSent"]?.Value == "fail")
+        {
+            <div class="alert alert-danger">
+                <strong>Fail!</strong> Sorry we are facing problem with sending your email, please try again.
+            </div>
+        }
+
+        <div class="col-md-8">
+            <!-- Embedded Google Map -->
+            <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d19036.63816124881!2d-2.605531575648919!3d53.386568068413375!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2c9c8c001ad028ff!2sICC+Solutions+Ltd!5e0!3m2!1sen!2suk!4v1480418915886"></iframe>
+        </div>
+        <!-- Contact Details Column -->
+        <div class="col-md-3 col-md-offset-1">
+            <h3>Contact Details</h3>
+            <p>
+                St James Business Centre<br>Warrington, Cheshire<br> WA4 6PS, UK<br>
+            </p>
+            <p>
+                <i class="fa fa-phone"></i>
+                <abbr title="Phone">P</abbr>: +44 (1925) 629001
+            </p>
+            <p>
+                <i class="fa fa-envelope-o"></i>
+                <abbr title="Email">E</abbr>: <a href="mailto:info@iccsolutions.com">info@iccsolutions.com</a>
+            </p>
+            <ul class="list-unstyled list-inline list-social-icons">
+
+                <li>
+                    <a href="https://www.facebook.com/ICCSolutionsLtd"><img border="0" style="margin: 0 5px 10px 0;" alt="logo" src="/Img/SocialIcons/facebook-logo-blue.png"></a>
+                    <a href="https://twitter.com/iccsolutions"><img border="0" style="margin: 0 5px 10px 0;" alt="logo" src="/Img/SocialIcons/twitter-logo-blue.png"></a>
+                    <a href="https://www.linkedin.com/company/icc-solutions-ltd"><img border="0" style="margin: 0 5px 10px 0;" alt="logo" src="/Img/SocialIcons/linkedin-logo-blue.png"></a>
+                    <a href="https://vimeo.com/iccsolutions"><img border="0" style="margin: 0 5px 10px 0;" alt="logo" src="/Img/SocialIcons/vimeo-square-logo-blue.png"></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>Send us a Message</h3>
+            <br/>
+            <form role="form" method="post" id="contactForm" action="@Url.Action("ContactFormSendEmail", "Helper")">
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>First Name:</label>
+                        <input type="text" style="max-width: 1000px" class="form-control" id="firstname" name="firstname" required data-validation-required-message="Please enter your name.">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Last Name:</label>
+                        <input type="text" style="max-width: 1000px" class="form-control" id="lastname" name="lastname" required data-validation-required-message="Please enter your name.">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Email Address:</label>
+                        <input type="email" style="max-width: 1000px" class="form-control" id="email" name="email" required data-validation-required-message="Please enter your email address.">
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Company:</label>
+                        <input type="text" style="max-width: 1000px" class="form-control" id="company" name="company" value="">
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Country:</label>
+                        <input type="text" style="max-width: 1000px" class="form-control" id="country" name="country" value="">
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Message:</label>
+                        <textarea rows="10" cols="100" class="form-control" id="message" name="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                    </div>
+                </div>                
+                @*-----Captcha Validation-----*@
+
+                <div class="g-recaptcha" data-sitekey="6LcQVw4UAAAAAEaUIbWIKTqtm_LBKEJsfpNVm4wr" data-callback="enableBtn"></div>
+                <br/>
+                <button type="submit" class="btn btn-primary" id="submitButton" disabled>Send Message</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function enableBtn() {
+        document.getElementById("submitButton").disabled = false;
+    }
+</script>

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+@foreach (var item in Model.Where(it => it.TypeId != "TopBanner"))
+{
+if (item.Priority%2 == 0)
+ {
+
+     <section id="ImagePods" class="bg-dark-gray" style="background-color: @item.BackgroundColour">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-12">
+                     <h3>@Html.ActionLink(item.Title, "LoadPageContent", "Pages", new {Id = item.Id }, new {@style = "color:" + item.TitleColour + ";font-weight: 700;"})</h3>
+                     <p style="color: @item.MainTextColour">@Html.Raw(HttpUtility.HtmlDecode(item.Subtitle)) </p>
+                     @if (!String.IsNullOrEmpty(item.ButtonText))
+                     {
+                         <a class="btn btn-primary" style="background-color: @item.ButtonColour; color: @item.ButtonTextColour" href="portfolio-item.html">@Html.DisplayFor(modelItem => item.ButtonText)</a>
+                     }
+                 </div>
+             </div>
+         </div>
+     </section>
+
+ }
+ else
+ {
+     <section id="ImagePods" class="bg-light-gray" style="background-color: @item.BackgroundColour">
+         <div class="container">
+             <div class="row">
+                 <div class="col-lg-12">
+                     <h3>@Html.ActionLink(item.Title, "LoadPageContent", "Pages", new {Id = item.Id }, new {@style = "color:" + item.TitleColour + ";font-weight: 700;"})</h3>
+                     <p style="color: @item.MainTextColour">@Html.Raw(HttpUtility.HtmlDecode(item.Subtitle)) </p>
+                     @if (!String.IsNullOrEmpty(item.ButtonText))
+                     {
+                         <a class="btn btn-primary" style="background-color: @item.ButtonColour; color: @item.ButtonTextColour" href="portfolio-item.html">@Html.DisplayFor(modelItem => item.ButtonText)</a>
+                     }
+                 </div>
+             </div>
+         </div>
+     </section>
+ }
+}
+

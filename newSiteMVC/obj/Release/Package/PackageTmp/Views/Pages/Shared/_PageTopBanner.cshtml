@@ -1,0 +1,17 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+@foreach (var item in Model.Where(item => item.TypeId == "TopBanner"))
+{
+    <div id="intro" class="top-banner-attachment" style="padding-top: 50px; padding-bottom: 50px; background-image: url(@item.ImageUrl)">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1" style="background-color:rgba(27, 55, 84, 0.86); border-radius: 20px;">
+                        <h2>@Html.Raw(HttpUtility.HtmlDecode(item.Title))</h2>
+                        <p class="intro-text">@Html.Raw(HttpUtility.HtmlDecode(item.MainText))</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

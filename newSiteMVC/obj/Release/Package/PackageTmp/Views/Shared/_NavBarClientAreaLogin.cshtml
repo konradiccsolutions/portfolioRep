@@ -1,0 +1,34 @@
+﻿<ul id="login-dp" class="dropdown-menu" style="min-width: 390px; padding-top:10px">
+    <li style="margin-top: -40px;">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="social-buttons">
+                    <p>ICC Solutions provides a download service for delivering product updates to its registered customers.</p>
+                    <p>Please enter your Client ID and Password to access product download area.</p>
+                </div>
+                <br />
+                <form id="loginForm" name="loginForm" method="post" action="/ClientLogin/login-exec.php">
+                    <div class="form-group col-md-12">
+                        <label class="sr-only" for="Username">Username</label>
+                        <input type="text" class="form-control" name="login" id="login" placeholder="Username" required>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label class="sr-only" for="Password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-8 col-sm-offset-2">
+                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br /> <br />
+            <div class="bottom text-center">
+                Forgotten your login details?  Contact support <a href="/Page/ICCSupport"><b>here</b></a>
+            </div>
+        </div>
+    </li>
+</ul>

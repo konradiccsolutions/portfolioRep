@@ -1,0 +1,7 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { pageType = @Model.First().PageId, typeId = @Model.First().TypeId }, new { @class = "btn btn-warning" })
+
+    @Html.ActionLink("Edit Section", "EditSection", new { id = @Model.First().Id, pageType = @Model.First().PageId }, new { @class = "btn btn-info" })
+</p>

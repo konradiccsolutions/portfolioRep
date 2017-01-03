@@ -1,0 +1,187 @@
+﻿@model newSiteMVC.Models.tbl_UserControl
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="~/Scripts/jscolor.js"></script>
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script>tinymce.init({ selector:'textarea' });</script>
+
+<div class="container body-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <br/><br/>
+            <h2 class="">Create New Component</h2>
+            <br /><br />
+        </div>
+        <br/><br/>
+            <div class="col-md-6 col-md-offset-2">
+                @using (Html.BeginForm("Upload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+                        <legend>Upload an image </legend>
+                        <p>(Please choose and upload the image before filling in the form)</p>                   
+                        <div class="editor-field">
+                            @Html.TextBox("file", "", new { type = "file", @class = "btn-default btn" })
+                        </div>
+                        <br />
+                        <div class="editor-field">
+                            @Html.Hidden("returnUrl", this.Request.RawUrl)
+                            @Html.Hidden("fileType", "image")
+                            <input type="submit" class="btn btn-info" value="Upload" />
+
+                        </div>
+                    </fieldset>
+                }
+                <br/>
+                @if (Request.QueryString["Upload"] == "success")
+                {
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> 
+                    </div>
+                }
+                @if (Request.QueryString["Upload"] == "fail")
+                {
+                    <div class="alert alert-danger">
+                        <strong>Fail!</strong>
+                    </div>
+                }
+
+            </div>
+        <div class="col-lg-12">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @switch (Request.QueryString["TypeID"])
+                    {
+                        case "TopBanner":
+                            @Html.Partial("/Views/Admin/Shared/_FormTopBanner.cshtml", Model)
+                            break;
+                        case "VideoPod":
+                            @Html.Partial("/Views/Admin/Shared/_FormVideoPod.cshtml", Model)
+                            break;
+                        case "NewsFeed":
+                            @Html.Partial("/Views/Admin/Shared/_FormNewsFeed.cshtml", Model)
+                            break;
+                        default:
+                            @Html.Partial("/Views/Admin/Shared/_FormFullContent.cshtml", Model)
+                            break;
+                    }
+
+                    <div class="col-md-offset-3" style="margin-left:100px; margin-top:-50px">
+                        <input type="submit" value="Create" class="btn btn-default btn-danger" style="margin-bottom:30px" />
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+
+
+                </div>
+            }
+
+
+            <script type="text/javascript">
+
+                $("#fileInput").change(function () {
+                    var filename = document.getElementById("fileInput").files[0].name;
+                    $("#ImageUrl").val(filename);
+                });
+
+                function check(num) {
+                    switch (num) {
+                        case 1:
+                            document.getElementById('BackgroundColour').value = document.getElementById('cpBackgroundColour').value;
+                            break;
+                        case 2:
+                            document.getElementById('ButtonColour').value = document.getElementById('cpButtonColour').value;
+                            break;
+                        case 3:
+                            document.getElementById('ButtonTextColour').value = document.getElementById('cpButtonTextColour').value;
+                            break;
+                        case 4:
+                            document.getElementById('TitleColour').value = document.getElementById('cpTitleColour').value;
+                            break;
+                        case 5:
+                            document.getElementById('MainTextColour').value = document.getElementById('cpMainTextColour').value;
+                    }
+
+                }
+
+            </script>
+
+            <script type="text/javascript">
+                $("#cpBackgroundColour").spectrum({
+                    preferredFormat: "hex",
+                    color: "#f00",
+                    showInput: true,
+                    allowEmpty: true,
+                    showPalette: true,
+                    showSelectionPalette: true,
+                    palette: [],
+                    localStorageKey: "spectrum.homepage"
+                });
+
+                $("#cpButtonColour").spectrum({
+                    preferredFormat: "hex",
+                    color: "#f00",
+                    showInput: true,
+                    allowEmpty: true,
+                    showPalette: true,
+                    showSelectionPalette: true,
+                    palette: [],
+                    localStorageKey: "spectrum.homepage"
+                });
+
+                $("#cpButtonTextColour").spectrum({
+                    preferredFormat: "hex",
+                    color: "#f00",
+                    showInput: true,
+                    allowEmpty: true,
+                    showPalette: true,
+                    showSelectionPalette: true,
+                    palette: [],
+                    localStorageKey: "spectrum.homepage"
+                });
+
+                $("#cpTitleColour").spectrum({
+                    preferredFormat: "hex",
+                    color: "#f00",
+                    showInput: true,
+                    allowEmpty: true,
+                    showPalette: true,
+                    showSelectionPalette: true,
+                    palette: [],
+                    localStorageKey: "spectrum.homepage"
+                });
+
+                $("#cpMainTextColour").spectrum({
+                    preferredFormat: "hex",
+                    color: "#f00",
+                    showInput: true,
+                    allowEmpty: true,
+                    showPalette: true,
+                    showSelectionPalette: true,
+                    palette: [],
+                    localStorageKey: "spectrum.homepage"
+                });
+            </script>
+
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+                @Scripts.Render("~/bundles/jqueryspectrum")
+
+            }
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿@model newSiteMVC.Models.tbl_UserControl
+
+<div class="col-md-4">
+<li style="margin-bottom: 140px;">
+    <div class="products-item products-img-1 wow fadeInUp" style="background-image: url(..@Model.ImageUrl); background-size: 425px; background-repeat: no-repeat; background-position: center;">
+        <div class="products-info" style="background-color: @Model.BackgroundColour">
+            <a href="@Model.UrlLink" style="text-decoration: none; color: @Model.ButtonTextColour"><span>@Model.ButtonText</span></a>
+        </div>
+
+    </div>
+    <div class="products-address">
+        <a href="@Model.UrlLink"><b style="text-decoration: none; color: @Model.TitleColour">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</b></a>
+        <span style="color: @Model.MainTextColour">@Html.Raw(HttpUtility.HtmlDecode(Model.MainText))</span>
+    </div>
+</li>
+</div>

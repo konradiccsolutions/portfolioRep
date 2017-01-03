@@ -1,0 +1,11 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+@foreach (var item in Model.Where(it => it.TypeId == "VideoPod"))
+{
+    <div class="col-md-4" style="margin-bottom: 20px">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="@item.UrlLink" frameborder="0" allowfullscreen style="border-radius:20px !important"></iframe>
+        </div>
+    </div>
+
+}

@@ -1,0 +1,74 @@
+﻿@model newSiteMVC.Models.tbl_UserControl
+
+    @if (Model.Priority % 2 == 0)
+    {
+        <section id="ImagePods" class="bg-dark-gray" style="background-color:@Model.BackgroundColour">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <img class="img-responsive img-hover" src="@Html.DisplayFor(modelItem => Model.ImageUrl)" alt="" style="box-shadow: 0px 0px 29px -12px; height: auto">
+                        </div>
+                        <div class="col-md-6 col-md-offset-1">
+                            @if (!String.IsNullOrEmpty(Model.UrlLink))
+                            {
+                                <a href="@Model.UrlLink"><h3 class="header-colour" style="color: @Model.TitleColour; font-weight: 700;">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h3></a>
+                            }
+                            else
+                            {
+                                <h3 class="header-colour" style="color: @Model.TitleColour; font-weight: 700;">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h3>
+
+                            }
+                            <p style="color: @Model.MainTextColour">@Html.Raw(HttpUtility.HtmlDecode(Model.MainText))</p>
+                            @if (!String.IsNullOrEmpty(Model.ButtonText))
+                            {
+                                <a class="btn btn-primary" style="background-color: @Model.ButtonColour; color: @Model.ButtonTextColour" href="@Model.UrlLink">@Html.DisplayFor(modelItem => Model.ButtonText)</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <section id="ImagePods" class="bg-light-gray" style="background-color:@Model.BackgroundColour">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <img class="img-responsive img-hover" src="@Html.DisplayFor(modelItem => Model.ImageUrl)" alt="" style="box-shadow: 0px 0px 29px -12px; height: auto;margin-top: 15px;">
+                        </div>
+                        <div class="col-md-6 col-md-offset-1">
+                            @if (!String.IsNullOrEmpty(Model.UrlLink))
+                            {
+                                <a href="@Model.UrlLink"><h3 class="header-colour" style="color: @Model.TitleColour; font-weight: 700;">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h3></a>
+                            }
+                            else if (!String.IsNullOrEmpty(Model.Title))
+                            {
+                                <h3 class="header-colour" style="color: @Model.TitleColour; font-weight: 700;">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h3>
+
+                            }                            
+                            <p style="color: @Model.MainTextColour">@Html.Raw(HttpUtility.HtmlDecode(Model.MainText))</p>
+                            @if (!String.IsNullOrEmpty(Model.ButtonText))
+                            {
+                                <a class="btn btn-primary" style="background-color: @Model.ButtonColour; color: @Model.ButtonTextColour" href="@Model.UrlLink">@Html.DisplayFor(modelItem => Model.ButtonText)</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+@if (@Request.RawUrl == "/Page/ICCSupport")
+{
+    <script type="text/javascript" src="/Scripts/iccZendesk.js" language="javascript"></script>
+}
+@if (@Request.RawUrl == "/Page/VantivSupport")
+{
+    <script type="text/javascript" src="/Scripts/VantivZendesk.js" language="javascript"></script>
+
+}

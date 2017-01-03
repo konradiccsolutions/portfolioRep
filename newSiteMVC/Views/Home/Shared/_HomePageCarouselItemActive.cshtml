@@ -1,0 +1,25 @@
+﻿@model newSiteMVC.Models.tbl_UserControl
+
+<div class="item active" style="background-color:@Model.BackgroundColour; background-image: url(@Model.ImageUrl)">
+    <div class="container">
+        @if (!String.IsNullOrEmpty(@Model.ButtonText))
+        {
+            <div class="carousel-caption" style="padding-bottom: 50px">
+                <h1>@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h1>
+                <p>@Html.Raw(HttpUtility.HtmlDecode(Model.MainText))</p>
+                <p>
+                    <button type="button" class="btn btn-lg btn-primary" style="color: @Model.ButtonTextColour; background-color: @Model.ButtonColour">@Model.ButtonText</button>
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="carousel-caption" style="padding-bottom: 100px">
+                <h1>@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h1>
+                <p>@Html.Raw(HttpUtility.HtmlDecode(Model.MainText))</p>
+            </div>
+        }
+
+    </div>
+</div>
+

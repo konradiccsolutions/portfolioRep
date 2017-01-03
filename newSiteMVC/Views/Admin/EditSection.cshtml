@@ -1,0 +1,224 @@
+﻿@model newSiteMVC.Models.tbl_UserControl
+@{
+    ViewBag.Title = "EditSection";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container body-content">
+<div class="row">
+    <br/>
+    <div class="col-lg-12">
+        <h2 class="">Edit all components</h2>
+    </div>
+    <br/>
+    <div class="col-lg-12">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                @Html.HiddenFor(model => model.Id, new {id = Model.Id})
+                
+                <br />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BackgroundColour, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.EditorFor(model => model.BackgroundColour, new {htmlAttributes = new {@class = "input-sm"}})
+                    @Html.ValidationMessageFor(model => model.BackgroundColour, "", new {@class = "text-danger"})
+                    <input type="text" class="" name="cpBackgroundColour" id="cpBackgroundColour" style="display: none;" onchange="check(1)">
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ButtonColour, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.EditorFor(model => model.ButtonColour, new {htmlAttributes = new {@class = "input-sm"}})
+                    @Html.ValidationMessageFor(model => model.ButtonColour, "", new {@class = "text-danger"})
+                    <input type="text" class="" name="cpButtonColourr" id="cpButtonColour" style="display: none;" onchange="check(2)">
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ButtonTextColour, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.EditorFor(model => model.ButtonTextColour, new {htmlAttributes = new {@class = "input-sm"}})
+                    @Html.ValidationMessageFor(model => model.ButtonTextColour, "", new {@class = "text-danger"})
+                    <input type="text" class="" name="cpButtonTextColour" id="cpButtonTextColour" style="display: none;" onchange="check(3)">
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TitleColour, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.EditorFor(model => model.TitleColour, new {htmlAttributes = new {@class = "input-sm"}})
+                    @Html.ValidationMessageFor(model => model.TitleColour, "", new {@class = "text-danger"})
+                    <input type="text" class="" name="cpTitleColour" id="cpTitleColour" style="display: none;" onchange="check(4)">
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MainTextColour, htmlAttributes: new {@class = "control-label col-md-2"})
+                    @Html.EditorFor(model => model.MainTextColour, new {htmlAttributes = new {@class = "input-sm"}})
+                    @Html.ValidationMessageFor(model => model.MainTextColour, "", new {@class = "text-danger"})
+                    <input type="text" class="" name="cpMainTextColour" id="cpMainTextColour" style="display: none;" onchange="check(5)">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="SaveAll" class="btn btn-default"/>
+                </div>
+            </div>
+        }
+    </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryspectrum")
+
+<script type="text/javascript">
+
+                        function check(num) {
+                            switch (num)
+                            {
+                                case 1:
+                                    document.getElementById('BackgroundColour').value = document.getElementById('cpBackgroundColour').value;
+                                    break;
+                                case 2 :
+                                    document.getElementById('ButtonColour').value = document.getElementById('cpButtonColour').value;
+                                    break;
+                                case 3 :
+                                    document.getElementById('ButtonTextColour').value = document.getElementById('cpButtonTextColour').value;
+                                    break;
+                                case 4 :
+                                    document.getElementById('TitleColour').value = document.getElementById('cpTitleColour').value;
+                                    break;
+                                case 5 :
+                                    document.getElementById('MainTextColour').value = document.getElementById('cpMainTextColour').value;
+                                    break;
+                                case 6:
+                                    document.getElementById('SectionBackgroundColour').value = document.getElementById('cpSectionBackgroundColour').value;
+                                    break;
+                                case 7:
+                                    document.getElementById('SectionTextColour').value = document.getElementById('cpSectionTextColour').value;
+                                    break;
+                                case 8:
+                                    document.getElementById('SectionTextUnderlineColour').value = document.getElementById('cpSectionTextUnderlineColour').value;
+                                    break;
+
+                            }
+
+                        }
+
+                        function CheckName() {
+
+                            var title = document.getElementById('Title').value;
+                            var mainText = document.getElementById('MainText').value;
+                            var image = document.getElementById('ImageUrl').value;
+                            var buttonText = document.getElementById('ButtonText').value;
+                            var buttonColour = document.getElementById('ButtonColour').value;
+                            var buttonTextColour = document.getElementById('ButtonTextColour').value;
+                            var titleColour = document.getElementById('TitleColour').value;
+                            var mainTextColour = document.getElementById('MainTextColour').value;
+                            var podColour = document.getElementById('BackgroundColour').value;
+
+
+                            document.getElementById("titleDemo").innerHTML = title;
+                            document.getElementById("mainTextDemo").innerHTML = mainText;
+                            document.getElementById("imgDemo").src = image;
+                            document.getElementById("buttonDemo").innerHTML = buttonText;
+                            document.getElementById("buttonDemo").style.backgroundColor = buttonColour;
+                            document.getElementById("buttonDemo").style.color = buttonTextColour;
+                            document.getElementById("titleDemo").style.color = titleColour;
+                            document.getElementById("mainTextDemo").style.color = mainTextColour;
+                            document.getElementById("podDemo").style.backgroundColor = podColour;
+                            document.getElementById("podDemo").style.display = "block";
+                      }
+
+</script>
+    <script type="text/javascript">
+                    $("#cpBackgroundColour").spectrum({
+                        preferredFormat: "hex",
+                        color: "#f00",
+                        showInput: true,
+                        allowEmpty: true,
+                        showPalette: true,
+                        showSelectionPalette: true,
+                        palette: [],
+                        localStorageKey: "spectrum.homepage"
+                    });
+
+                    $("#cpButtonColour").spectrum({
+                        preferredFormat: "hex",
+                        color: "#f00",
+                        showInput: true,
+                        allowEmpty: true,
+                        showPalette: true,
+                        showSelectionPalette: true,
+                        palette: [],
+                        localStorageKey: "spectrum.homepage"
+                    });
+
+                    $("#cpButtonTextColour").spectrum({
+                        preferredFormat: "hex",
+                        color: "#f00",
+                        showInput: true,
+                        allowEmpty: true,
+                        showPalette: true,
+                        showSelectionPalette: true,
+                        palette: [],
+                        localStorageKey: "spectrum.homepage"
+                    });
+
+                    $("#cpTitleColour").spectrum({
+                        preferredFormat: "hex",
+                        color: "#f00",
+                        showInput: true,
+                        allowEmpty: true,
+                        showPalette: true,
+                        showSelectionPalette: true,
+                        palette: [],
+                        localStorageKey: "spectrum.homepage"
+                    });
+
+                    $("#cpMainTextColour").spectrum({
+                        preferredFormat: "hex",
+                        color: "#f00",
+                        showInput: true,
+                        allowEmpty: true,
+                        showPalette: true,
+                        showSelectionPalette: true,
+                        palette: [],
+                        localStorageKey: "spectrum.homepage"
+                    });
+
+                    $("#cpSectionBackgroundColour").spectrum({
+                        preferredFormat: "hex",
+                        color: "#f00",
+                        showInput: true,
+                        allowEmpty: true,
+                        showPalette: true,
+                        showSelectionPalette: true,
+                        palette: [],
+                        localStorageKey: "spectrum.homepage"
+                    });
+
+                    $("#cpSectionTextColour").spectrum({
+                        preferredFormat: "hex",
+                        color: "#f00",
+                        showInput: true,
+                        allowEmpty: true,
+                        showPalette: true,
+                        showSelectionPalette: true,
+                        palette: [],
+                        localStorageKey: "spectrum.homepage"
+                    });
+
+                    $("#cpSectionTextUnderlineColour").spectrum({
+                        preferredFormat: "hex",
+                        color: "#f00",
+                        showInput: true,
+                        allowEmpty: true,
+                        showPalette: true,
+                        showSelectionPalette: true,
+                        palette: [],
+                        localStorageKey: "spectrum.homepage"
+                    });
+    </script>
+}

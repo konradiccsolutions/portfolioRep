@@ -1,0 +1,33 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Top Banner Details
+        </th>
+    </tr>
+    </thead>
+@foreach (var item in Model.Where(item => item.TypeId == "TopBanner"))
+{
+    <tbody>
+        <tr>
+            <td>
+                @item.Title
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @item.MainText
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.Id, pageType = @Model.First().PageId }, new {@class = "btn btn-info", style = "margin-right: 5px; min-width: 70px"})
+                @Html.HiddenFor(modelItem => item.Id)
+            </td>
+        </tr>
+
+    </tbody>
+}
+</table>

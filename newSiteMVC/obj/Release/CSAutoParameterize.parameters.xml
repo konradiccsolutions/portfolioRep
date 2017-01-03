@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="StoreDB-Web.config Connection String" description="StoreDB Connection String used in web.config by the application to access the database." defaultValue="data source=icc-core.database.windows.net;Initial Catalog=MVCWebsiteDevDB;User ID=wizard;Password=iccsol2016!" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\stoczynskik\\Source\\Repos\\Main\ Web\ Site\\newSiteMVC\\newSiteMVC\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='StoreDB']/@connectionString" />
+  </parameter>
+</parameters>

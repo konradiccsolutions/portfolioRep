@@ -1,0 +1,101 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+@{
+    ViewBag.Title = "Admin Panel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@*<-----------------Load components for a selected page----------------->*@
+
+@{
+    var listOfTypes = new List<string>();
+
+    foreach (var item in Model)
+    {
+        if (!listOfTypes.Contains(item.TypeId))
+        {
+            listOfTypes.Add(item.TypeId);
+        }
+
+    }
+
+}
+
+
+<div class="container body-content">
+    
+    <div class="row" style="margin-top: 200px">
+        <div class="col-md-3" style="margin-top: 0px;">
+            @Html.Partial("~/Views/Admin/Shared/_AdminNavBar.cshtml")
+        </div>
+        <div class="col-md-9" style="margin-top: -15px;">
+
+            <h1>Update @Model.FirstOrDefault().PageId Page</h1>
+            
+            <br/>
+                @using (Html.BeginForm("Upload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+                        <legend>Upload a file </legend>
+                        <div class="editor-field">
+                            @Html.TextBox("file", "", new { type = "file", @class = "btn-default btn" })
+                        </div>
+                        <br/>
+                        <div class="editor-field">
+                            @Html.Hidden("returnUrl", this.Request.RawUrl)
+                            @Html.Hidden("fileType", "file")
+                            <input type="submit" class="btn btn-info" value="Upload" />
+
+                        </div>
+                    </fieldset>
+                }
+            
+            @if (Request.QueryString["Upload"] == "success")
+            {
+                <div class="alert alert-success">
+                    <strong>Success!</strong> The file can be found under "/Files/filename.extension"
+                </div>
+            }
+            @if (Request.QueryString["Upload"] == "fail")
+            {
+                <div class="alert alert-danger">
+                    <strong>Fail!</strong>
+                </div>
+            }
+           
+
+            @foreach (var type in listOfTypes)
+            {
+                if (type != "TopBanner")
+                {
+                    var newModel = Model.Where(it => it.TypeId == type);
+                    <br/>
+                    <div style="border-bottom: 2px dotted black; padding-bottom: 20px">
+                        <h2>@type</h2>
+                        <br/>
+                        @Html.Partial("~/Views/Admin/Shared/_ControlButtons.cshtml", newModel)
+                        <br/>
+                        @if (type == "NewsFeed")
+                        {
+                            @Html.Partial("~/Views/Admin/Shared/_ContentTable.cshtml", newModel.OrderByDescending(it => it.Priority))
+                        }
+                        else
+                        {
+                            @Html.Partial("~/Views/Admin/Shared/_ContentTable.cshtml", newModel)
+                        }
+                    </div>
+                }
+                else
+                {
+                    <br/>
+                    <h2>@type</h2>
+                    <br/>
+                    var newModel = Model.Where(it => it.TypeId == type);
+                    @Html.Partial("~/Views/Admin/Shared/_TopBanner.cshtml", newModel)
+
+                }
+            }
+        </div>
+    </div>
+</div>
+

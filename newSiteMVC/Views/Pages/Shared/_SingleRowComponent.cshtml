@@ -1,0 +1,55 @@
+﻿@model newSiteMVC.Models.tbl_UserControl
+
+@if (Model.Priority % 2 == 0)
+{
+
+    <section id="ImagePods" class="bg-dark-gray" style="background-color: @Model.BackgroundColour">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @if (!String.IsNullOrEmpty(Model.UrlLink))
+                    {
+                        <a href="@Model.UrlLink"><h3 class="header-colour" style="color: @Model.TitleColour; font-weight: 700;">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h3></a>
+                    }
+                    else
+                    {
+                        <h3 class="header-colour" style="color: @Model.TitleColour; font-weight: 700;">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h3>
+                    }                    
+                    
+                    <p style="color: @Model.MainTextColour">@Html.Raw(HttpUtility.HtmlDecode(Model.MainText)) </p>
+
+                    @if (!String.IsNullOrEmpty(Model.ButtonText))
+                    {
+                        <a class="btn btn-primary" style="background-color:@Model.ButtonColour; color: @Model.ButtonTextColour" href="@Model.UrlLink">@Html.DisplayFor(modelItem => Model.ButtonText)</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+else
+{
+    <section id="ImagePods" class="bg-light-gray" style="background-color: @Model.BackgroundColour">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @if (!String.IsNullOrEmpty(Model.UrlLink))
+                    {
+                        <a href="@Model.UrlLink"><h3 class="header-colour" style="color: @Model.TitleColour; font-weight: 700;">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h3></a>
+                    }
+                    else
+                    {
+                        <h3 class="header-colour" style="color: @Model.TitleColour; font-weight: 700;">@Html.Raw(HttpUtility.HtmlDecode(Model.Title))</h3>
+                    }    
+                    <p style="color: @Model.MainTextColour">@Html.Raw(HttpUtility.HtmlDecode(Model.MainText)) </p>
+                    @if (!String.IsNullOrEmpty(Model.ButtonText))
+                    {
+                        <a class="btn btn-primary" style="background-color: @Model.ButtonColour; color: @Model.ButtonTextColour" href="@Model.UrlLink">@Html.DisplayFor(modelItem => Model.ButtonText)</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

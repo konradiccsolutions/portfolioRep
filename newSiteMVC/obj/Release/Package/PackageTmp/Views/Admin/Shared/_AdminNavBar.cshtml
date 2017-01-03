@@ -1,0 +1,103 @@
+﻿<style>
+    @@media (min-width: 768px) {
+  .navbar2-collapse {
+    height: auto;
+    border-top: 0;
+    box-shadow: none;
+    max-height: none;
+    padding-left:0;
+    padding-right:0;
+  }
+  .navbar2-collapse.collapse {
+    display: block !important;
+    width: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+  .navbar2-collapse.in {
+    overflow-x: visible;
+  }
+
+.navbar2
+{
+	max-width:300px;
+	margin-right: 0;
+	margin-left: 0;
+    position: relative;
+}	
+
+.navbar2-nav,
+.navbar2-nav > li,
+.navbar2-left,
+.navbar2-right,
+.navbar2-header
+{float:none !important;}
+
+.navbar2-right .dropdown-menu {left:0;right:auto;}
+.navbar2-collapse .navbar2-nav.navbar2-right:last-child {
+    margin-right: 0;
+}
+}
+</style>
+
+<nav class="navbar2 navbar-default" role="navigation" style="width:50% !Important">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Create New Admin Account", "Register", "Account", null, null)</li>
+            <li>---------------------------</li>
+            <li>@Html.ActionLink("Home", "GetActionResultForPage", "Admin", new {id = "Home"}, new {@class = ""})</li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About ICC<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("About Us", "GetActionResultForPage", "Admin", new {id = "AboutUs"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Awards", "GetActionResultForPage", "Admin", new {id = "Awards"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Charity", "GetActionResultForPage", "Admin", new {id = "Charity"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Events", "GetActionResultForPage", "Admin", new {id = "Events"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("InTheNews", "GetActionResultForPage", "Admin", new {id = "InTheNews"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Testimonials", "GetActionResultForPage", "Admin", new {id = "Testimonials"}, new {@class = ""})</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Products<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Device Testing", "GetActionResultForPage", "Admin", new {id = "DeviceTesting"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Vantiv Viable", "GetActionResultForPage", "Admin", new {id = "VantivViable"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Host Simulation", "GetActionResultForPage", "Admin", new {id = "HostSimulation"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Training Cards", "GetActionResultForPage", "Admin", new {id = "TrainingCards"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Developer Tool", "GetActionResultForPage", "Admin", new {id = "DeveloperTool"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Card Testing", "GetActionResultForPage", "Admin", new {id = "CardTesting"}, new {@class = ""})</li>
+                </ul>
+            </li>
+            <li>@Html.ActionLink("Export", "GetActionResultForPage", "Admin", new {id = "Export"}, new {@class = ""})</li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">EMV in the USA<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("About EMV", "GetActionResultForPage", "Admin", new {id = "AboutEMV"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Why Choose Us?", "GetActionResultForPage", "Admin", new {id = "WhyChooseUs"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("US Products", "GetActionResultForPage", "Admin", new {id = "USProducts"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("EMV VAR Qualification program", "GetActionResultForPage", "Admin", new {id = "EMVVar"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Partnerships", "GetActionResultForPage", "Admin", new {id = "Partnerships"}, new {@class = ""})</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("ICC Support", "GetActionResultForPage", "Admin", new {id = "ICCSupport"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Vantiv Support", "GetActionResultForPage", "Admin", new {id = "VantivSupport"}, new {@class = ""})</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Us<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Contact Us", "GetActionResultForPage", "Admin", new {id = "ContactUs"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Regional Offices", "GetActionResultForPage", "Admin", new {id = "RegionalOffices"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Careers", "GetActionResultForPage", "Admin", new {id = "Careers"}, new {@class = ""})</li>
+                    <li>@Html.ActionLink("Distributors", "GetActionResultForPage", "Admin", new {id = "Distributors"}, new {@class = ""})</li>
+                </ul>
+            </li>
+            <li><a href="#">Client Area</a></li>
+        </ul>
+    </div>
+</nav>

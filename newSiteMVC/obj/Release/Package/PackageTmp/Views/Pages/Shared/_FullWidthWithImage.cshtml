@@ -1,0 +1,57 @@
+﻿@model IEnumerable<newSiteMVC.Models.tbl_UserControl>
+
+@{
+    var twoColumnObject = Model.First(it => it.TypeId == "SingleColumn" || it.TypeId =="NewsFeed");
+    var videoPodObject = Model.First();
+
+    foreach (var item in Model)
+    {
+        if (item.TypeId == "VideoPod")
+        {
+            videoPodObject = Model.First(it => it.TypeId == "VideoPod");
+        }
+    }
+
+
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="color: @twoColumnObject.TitleColour">@Html.Raw(HttpUtility.HtmlDecode(twoColumnObject.Title))</h3>                     
+            <p style="color:@twoColumnObject.MainTextColour">@Html.Raw(HttpUtility.HtmlDecode(twoColumnObject.MainText))</p>
+            <hr>
+            
+            @if (String.IsNullOrEmpty(videoPodObject.UrlLink))
+            {
+                if (!string.IsNullOrEmpty(twoColumnObject.ImageUrl))
+                {
+                    <img class="img-responsive img-hover" src="@twoColumnObject.ImageUrl" alt="img">
+                    <hr>
+                }
+
+            }
+            else
+            {
+                <div class="col-md-12" style="margin-bottom: 20px">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe src="@videoPodObject.UrlLink" frameborder="1" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <hr>
+            }
+            
+        </div>
+    </div>
+    @{
+        string[] listOfPages = new string[] { "DeviceTesting", "VantivViable", "HostSimulation", "TrainingCards", "DeveloperTool", "CardTesting"};
+
+        foreach (var item in listOfPages)
+        {
+            if (@Request.RawUrl == "/Page/" + item)
+            {
+                @Html.Partial("~/Views/Pages/Shared/_OtherProductsBar.cshtml", twoColumnObject)
+            }
+        }
+    }
+    
+</div>

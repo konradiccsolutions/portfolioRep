@@ -1,0 +1,84 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/Home"><img src="/Img/ICC_logo_flat_white.png" class="banner-logo"></a>                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About ICC<span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>@Html.ActionLink("About Us", "LoadPageContent", "Pages", new {pageId = "AboutUs"}, null)</li>
+                            <li>@Html.ActionLink("In The News", "LoadPageContent", "Pages", new { pageId = "InTheNews" }, null)</li>
+                            <li>@Html.ActionLink("Awards", "LoadPageContent", "Pages", new {pageId = "Awards"}, null)</li>
+                            <li>@Html.ActionLink("Charity", "LoadPageContent", "Pages", new {pageId = "Charity"}, null)</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Events", "LoadPageContent", "Pages", new {pageId = "Events"}, null)</li>
+                            <li>@Html.ActionLink("Testimonials", "LoadPageContent", "Pages", new {pageId = "Testimonials"}, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Products<span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>@Html.ActionLink("Device Testing", "LoadPageContent", "Pages", new {pageId = "DeviceTesting"}, null)</li>
+                            <li>@Html.ActionLink("Vantiv VIABLE", "LoadPageContent", "Pages", new {pageId = "VantivViable"}, null)</li>
+                            <li>@Html.ActionLink("Host Simulation", "LoadPageContent", "Pages", new {pageId = "HostSimulation"}, null)</li>
+                            <li>@Html.ActionLink("Training Cards", "LoadPageContent", "Pages", new {pageId = "TrainingCards"}, null)</li>
+                            <li>@Html.ActionLink("Developer Tool", "LoadPageContent", "Pages", new {pageId = "DeveloperTool"}, null)</li>
+                            <li>@Html.ActionLink("Card Testing", "LoadPageContent", "Pages", new {pageId = "CardTesting"}, null)</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Export", "LoadPageContent", "Pages", new {pageId = "Export"}, null)</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">EMV in the USA<span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>@Html.ActionLink("About EMV", "LoadPageContent", "Pages", new {pageId = "AboutEMV"}, null)</li>
+                            <li>@Html.ActionLink("Why Choose Us?", "LoadPageContent", "Pages", new {pageId = "WhyChooseUs"}, null)</li>
+                            <li>@Html.ActionLink("US Products", "LoadPageContent", "Pages", new {pageId = "USProducts"}, null)</li>
+                            <li>@Html.ActionLink("EMV VAR Qualification program", "LoadPageContent", "Pages", new {pageId = "EMVVar"}, null)</li>
+                            <li>@Html.ActionLink("Partnerships", "LoadPageContent", "Pages", new {pageId = "Partnerships"}, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Support<span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>@Html.ActionLink("ICC Support", "LoadPageContent", "Pages", new {pageId = "ICCSupport"}, null)</li>
+                            <li>@Html.ActionLink("Vantiv Support", "LoadPageContent", "Pages", new {pageId = "VantivSupport"}, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact Us<span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>@Html.ActionLink("Contact Us", "LoadPageContent", "Pages", new {pageId = "ContactUs"}, null)</li>
+                            <li>@Html.ActionLink("Regional Offices", "LoadPageContent", "Pages", new {pageId = "RegionalOffices"}, null)</li>
+                            <li>@Html.ActionLink("Careers", "LoadPageContent", "Pages", new {pageId = "Careers"}, null)</li>
+                            <li>@Html.ActionLink("Distributors", "LoadPageContent", "Pages", new {pageId = "Distributors"}, null)</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Client Area <span class="caret"></span></a>
+                        @Html.Partial("_NavBarClientAreaLogin")
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-envelope"></span><span class="caret"></span></a>
+                        @Html.Partial("_NavBarContactForm")
+                    </li>
+                    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @Html.Partial("_LoginPartial")
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>

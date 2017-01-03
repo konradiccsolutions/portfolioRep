@@ -1,0 +1,64 @@
+﻿@model newSiteMVC.Models.tbl_UserControl
+
+<div class="row" style="margin-top: -70px">
+    <div class="col-lg-12">
+        <h3 class="page-header">Other Products</h3>
+    </div>
+
+    @if (Model.PageId != "DeviceTesting")
+            {
+        <div class="col-sm-2 col-xs-6">
+            <a href="/Page/DeviceTesting">
+                <img class="img-responsive img-hover img-related crop-height-110" src="/Img/device-testing.jpg" alt="">
+                <h5>Device Testing</h5>
+            </a>
+        </div>
+    }
+    @if (Model.PageId != "VantivViable")
+            {
+        <div class="col-sm-2 col-xs-6">
+            <a href="/Page/VantivViable">
+                <img class="img-responsive img-hover img-related crop-height-110" src="/Img/vantiv.jpg" alt="">
+                <h5>Vantiv VIABLE</h5>
+            </a>
+        </div>
+    }
+    @if (Model.PageId != "HostSimulation")
+            {
+        <div class="col-sm-2 col-xs-6">
+            <a href="/Page/HostSimulation">
+                <img class="img-responsive img-hover img-related crop-height-110" src="/Img/host-simulation.png" alt="">
+                <h5>Host Simulation</h5>
+            </a>
+        </div>
+    }
+    @if (Model.PageId != "TrainingCards")
+            {
+        <div class="col-sm-2 col-xs-6">
+            <a href="/Page/TrainingCards">
+                <img class="img-responsive img-hover img-related crop-height-110" src="/Img/training-cards.jpg" alt="">
+                <h5>Training Cards</h5>
+            </a>
+        </div>
+    }
+    @if (Model.PageId != "DeveloperTool")
+            {
+        <div class="col-sm-2 col-xs-6">
+            <a href="/Page/DeveloperTool">
+                <img class="img-responsive img-hover img-related crop-height-110" src="/Img/script-tools.png" alt="">
+                <h5>Developer Tool</h5>
+            </a>
+        </div>
+    }
+    @if (Model.PageId != "CardTesting")
+            {
+        <div class="col-sm-2 col-xs-6">
+            <a href="/Page/CardTesting">
+                <img class="img-responsive img-hover img-related crop-height-110" src="/Img/card-testing.jpg" alt="">
+                <h5>Card Testing</h5>
+            </a>
+        </div>
+    }
+
+</div>
+
